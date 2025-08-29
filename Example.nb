@@ -1,0 +1,273 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9617,        265]
+NotebookOptionsPosition[      8215,        240]
+NotebookOutlinePosition[      8549,        255]
+CellTagsIndexPosition[      8506,        252]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ StyleBox["Title", "Title"]], "Input",
+ CellChangeTimes->{{3.965477753497189*^9, 
+  3.965477754813736*^9}},ExpressionUUID->"95511aee-eb56-40ae-b83a-\
+1cc3dc956d27"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"Notifier", " ", "Package", " ", "example"}], "Text"]], "Input",
+ CellChangeTimes->{{3.9654777674706917`*^9, 
+  3.965477775638071*^9}},ExpressionUUID->"2326b4ad-ccea-4ee5-abc2-\
+b07cb4cadc95"],
+
+Cell[BoxData[
+ StyleBox["Description", "Subtitle"]], "Input",
+ CellChangeTimes->{{3.9654777908063602`*^9, 
+  3.965477794093583*^9}},ExpressionUUID->"949026c5-0a56-4419-8a35-\
+b9fcf708e7a7"],
+
+Cell[TextData[{
+ "This notebook shows how to load the Notifier package, configure it with \
+your credentials, and send a test notification after a simulated long - \
+running task.\nMake sure ",
+ StyleBox["Notifier.wl",
+  FontWeight->"Bold"],
+ " is in the same directory as this notebook."
+}], "Text",
+ CellChangeTimes->{{3.965477816804613*^9, 3.965477822791726*^9}, 
+   3.965478202270892*^9},ExpressionUUID->"d0de0b32-cc6d-4285-9da9-\
+8fe09ec6ba1e"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{"Step", " ", "1"}], "-", 
+   RowBox[{"Load", " ", "the", " ", "Package"}]}], "Section"]], "Input",
+ CellChangeTimes->{{3.9654778710957212`*^9, 
+  3.965477871095998*^9}},ExpressionUUID->"3d577e53-432f-4d1e-bd8a-\
+a79cd19eeca5"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"First", ",", 
+   RowBox[{"we", " ", "set", " ", "the", " ", 
+    RowBox[{"notebook", "'"}], "s", " ", "directory", " ", "as", " ", "the", 
+    " ", "working", " ", "directory", " ", "and", " ", "then", " ", "load", 
+    " ", "the", " ", 
+    RowBox[{"package", "."}]}]}], "Text"]], "Input",
+ CellChangeTimes->{{3.965477890487804*^9, 
+  3.965477890487987*^9}},ExpressionUUID->"d1fba01f-feac-407a-b095-\
+1e8eee456172"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Set", " ", "the", " ", "directory", " ", "to", " ", "where", " ", "this", 
+    " ", "notebook", " ", "is", " ", "saved"}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SetDirectory", "[", 
+     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Load", " ", "the", " ", "Notifier", " ", "package"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Needs", "[", "\"\<Notifier`\>\"", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.965477921802917*^9, 
+  3.965477921803184*^9}},ExpressionUUID->"9a14fd91-3fa4-4f80-93ad-\
+e12dec42b740"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{"Step", " ", "2"}], "-", 
+   RowBox[{"Configure", " ", "Your", " ", "Credentials"}]}], 
+  "Section"]], "Input",
+ CellChangeTimes->{{3.9654779429638987`*^9, 
+  3.9654779429641857`*^9}},ExpressionUUID->"0a44f1b3-80c7-438f-9c2e-\
+3e1dd4153268"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetNotificationConfig", "[", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"--", 
+       RowBox[{"-", "For"}]}], " ", 
+      RowBox[{"Pushover", "--"}]}], "-"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "\"\<PushoverUserKey\>\"", "\[Rule]", "\"\<YOUR_PUSHOVER_USER_KEY\>\""}],
+      ",", "\[IndentingNewLine]", 
+     RowBox[{
+     "\"\<PushoverAPIToken\>\"", "\[Rule]", 
+      "\"\<YOUR_PUSHOVER_API_TOKEN\>\""}], ","}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"--", 
+       RowBox[{"-", "For"}]}], " ", 
+      RowBox[{"Telegram", "--"}]}], "-"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "\"\<TelegramBotToken\>\"", "\[Rule]", 
+      "\"\<YOUR_TELEGRAM_BOT_TOKEN\>\""}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+     "\"\<TelegramChatID\>\"", "\[Rule]", "\"\<YOUR_TELEGRAM_CHAT_ID\>\""}], 
+     ","}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"--", 
+       RowBox[{"-", "For"}]}], " ", "Email", " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+        "using", " ", "a", " ", "Gmail", " ", "App", " ", "Password"}], ")"}],
+        "--"}]}], "-"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+    "\"\<EmailUsername\>\"", "\[Rule]", "\"\<your.email@gmail.com\>\""}], ",",
+     "\[IndentingNewLine]", 
+    RowBox[{
+    "\"\<EmailPassword\>\"", "\[Rule]", 
+     "\"\<your-16-character-app-password\>\""}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+    "\"\<EmailRecipient\>\"", "\[Rule]", 
+     "\"\<recipient.email@example.com\>\""}]}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.9654779565094547`*^9, 3.965478069486569*^9}, {
+  3.965478174885982*^9, 
+  3.965478188566246*^9}},ExpressionUUID->"b9f8e72b-9af6-4a7d-8960-\
+a53441f63b36"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.965478097433342*^9},ExpressionUUID->"4d9e8fc5-8bd4-450a-a356-\
+2cf2e8302218"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"Step", " ", "3"}], "-", 
+     RowBox[{"Run", " ", "a", " ", "Test", " ", "Calculation"}]}], "&"}], " ",
+    "Notify"}], "Section"]], "Input",
+ CellChangeTimes->{{3.9654781006064987`*^9, 
+  3.965478100606765*^9}},ExpressionUUID->"eb4927f3-10db-4c11-9d3f-\
+bdf7365e72c2"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"Now", ",", 
+   RowBox[{
+    RowBox[{"we", "'"}], "ll", " ", "simulate", " ", "a", " ", "long", " ", 
+    "calculation", " ", "using", " ", 
+    RowBox[{"Pause", "[", "10", "]"}], " ", "to", " ", "wait", " ", "for", 
+    " ", "10", " ", 
+    RowBox[{"seconds", ".", "AbsoluteTiming"}], " ", "will", " ", "measure", 
+    " ", "the", " ", 
+    RowBox[{"duration", ".", "Once"}], " ", "complete"}], ",", 
+   RowBox[{
+   "SendNotification", " ", "will", " ", "send", " ", "the", " ", "result", 
+    " ", "to", " ", "your", " ", 
+    RowBox[{"device", "."}]}]}], "Text"]], "Input",
+ CellChangeTimes->{{3.965478118469158*^9, 
+  3.965478118469428*^9}},ExpressionUUID->"7e92d5f9-0ba1-40d1-8be6-\
+4c1de59e3356"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Run", " ", "a", " ", "sample", " ", "task", " ", "and", " ", "time", " ", 
+    "it"}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"timing", "=", 
+     RowBox[{"AbsoluteTiming", "[", 
+      RowBox[{
+       RowBox[{"Print", "[", "\"\<Starting long calculation...\>\"", "]"}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"Pause", "[", "10", "]"}], ";", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"This", " ", "simulates", " ", "a", " ", "10"}], "-", 
+         RowBox[{"second", " ", "task"}]}], "*)"}], 
+       RowBox[{
+       "result", "=", "\"\<Eigenvalues calculated successfully.\>\""}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", "\"\<...Calculation finished.\>\"", "]"}], ";"}],
+       "]"}]}], ";"}], "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Send", " ", "the", " ", "notification", " ", "with", " ", "the", " ", 
+     "timing", " ", "results"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"SendNotification", "[", 
+    RowBox[{
+     RowBox[{"\"\<Task complete in \>\"", "<>", 
+      RowBox[{"ToString", "[", 
+       RowBox[{"Round", "[", 
+        RowBox[{
+         RowBox[{"timing", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", "0.1"}], "]"}], "]"}], "<>", 
+      "\"\<s. Result: \>\"", "<>", "result"}], ",", "\"\<Email\>\""}], " ", 
+    RowBox[{"(*", 
+     RowBox[{
+     "Change", " ", "this", " ", "to", " ", "\"\<Pushover\>\"", " ", "or", 
+      " ", "\"\<Telegram\>\"", " ", "to", " ", "test", " ", "other", " ", 
+      "services"}], "*)"}], "]"}], "\n"}]}]], "Input",
+ CellChangeTimes->{{3.96547813738545*^9, 
+  3.9654781669897537`*^9}},ExpressionUUID->"af41b423-1dcf-43b9-b64c-\
+a29d45c5b683"]
+},
+WindowSize->{1920, 1011},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 178, 4, 72, "Input",ExpressionUUID->"95511aee-eb56-40ae-b83a-1cc3dc956d27"],
+Cell[739, 26, 227, 5, 34, "Input",ExpressionUUID->"2326b4ad-ccea-4ee5-abc2-b07cb4cadc95"],
+Cell[969, 33, 189, 4, 45, "Input",ExpressionUUID->"949026c5-0a56-4419-8a35-b9fcf708e7a7"],
+Cell[1161, 39, 449, 10, 60, "Text",ExpressionUUID->"d0de0b32-cc6d-4285-9da9-8fe09ec6ba1e"],
+Cell[1613, 51, 273, 7, 50, "Input",ExpressionUUID->"3d577e53-432f-4d1e-bd8a-a79cd19eeca5"],
+Cell[1889, 60, 452, 10, 34, "Input",ExpressionUUID->"d1fba01f-feac-407a-b095-1e8eee456172"],
+Cell[2344, 72, 673, 18, 101, "Input",ExpressionUUID->"9a14fd91-3fa4-4f80-93ad-e12dec42b740"],
+Cell[3020, 92, 288, 8, 50, "Input",ExpressionUUID->"0a44f1b3-80c7-438f-9c2e-3e1dd4153268"],
+Cell[3311, 102, 1920, 55, 262, "Input",ExpressionUUID->"b9f8e72b-9af6-4a7d-8960-a53441f63b36"],
+Cell[5234, 159, 147, 3, 55, "Input",ExpressionUUID->"4d9e8fc5-8bd4-450a-a356-2cf2e8302218"],
+Cell[5384, 164, 344, 10, 50, "Input",ExpressionUUID->"eb4927f3-10db-4c11-9d3f-bdf7365e72c2"],
+Cell[5731, 176, 737, 17, 34, "Input",ExpressionUUID->"7e92d5f9-0ba1-40d1-8be6-4c1de59e3356"],
+Cell[6471, 195, 1740, 43, 170, "Input",ExpressionUUID->"af41b423-1dcf-43b9-b64c-a29d45c5b683"]
+}
+]
+*)
+
