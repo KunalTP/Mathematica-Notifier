@@ -1,14 +1,14 @@
 (* ::Package:: *)
-(* :Name: Notifier` *)
+(* :Name: Math-Notifier` *)
 (* :Title: A Simple Notification Package for Mathematica *)
 (* :Context: Notifier` *)
-(* :Author: Your Name *)
+(* :Author: Kunal Rawat *)
 (* :Date: 2025-08-29 *)
 
 BeginPackage["Notifier`"];
 
 (* --- Public API --- *)
-(* These are the only functions users will interact with. *)
+(* User Interaction. *)
 
 SetNotificationConfig::usage = "SetNotificationConfig[options] sets the credentials for notification services. Options: \"PushoverUserKey\", \"PushoverAPIToken\", \"TelegramBotToken\", \"TelegramChatID\", \"EmailUsername\", \"EmailPassword\", \"EmailRecipient\"";
 SendNotification::usage = "SendNotification[message, method] sends a notification. Method can be \"Pushover\", \"Telegram\", or \"Email\".";
