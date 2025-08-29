@@ -98,6 +98,16 @@ SendNotification[
   "Task complete in " <> ToString[Round[timing[[1]]]] <> "s. " <> result, 
   "Telegram"
 ]
+---
+
+## Example
+
+An example notebook demonstrating the package's functionality is available.
+
+* **[View the example as a PDF](Example.pdf)** (Recommended for a quick look)
+* **[Download the interactive notebook](Example.nb)** (Right-click and select "Save Link As...")
+
+---
 ```
 
 ## License
