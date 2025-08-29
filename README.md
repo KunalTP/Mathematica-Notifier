@@ -4,53 +4,61 @@ A simple Mathematica package to send push notifications to your mobile device wh
 
 
 
-Tired of checking if your long calculations are done? This package sends an alert to your phone the moment your script finishes, so you can stop waiting and get back to your work.
-
 ## Features
-- **Multi-Platform:** Supports **Pushover**, **Telegram**, and **Email** (via Gmail).
-- **Easy to Use:** Configure credentials once, then send notifications with a single, clean function.
-- **Flexible:** Perfect for monitoring long-running calculations, data analysis, simulations, or exports.
+- Supports **Pushover**, **Telegram**, and **Email** (via Gmail).
+- Simple, clean functions to configure credentials and send messages.
+- Perfect for monitoring long-running calculations, data analysis, or simulations.
 
-***
-## Getting Started
-
-### 1. Installation
-The simplest way to use `Notifier` is to place it in your project directory.
+## Installation
 1.  Download the `Notifier.wl` file from this repository.
-2.  Place the file in the **same directory** as your Mathematica notebook (`.nb`).
+2.  Place `Notifier.wl` in the same directory as your Mathematica notebook (`.nb` file).
 
-> **Pro Tip:** For system-wide access, you can also place `Notifier.wl` in your `$UserBaseDirectory/Applications` folder.
+## Usage
 
-### 2. Configuration: Getting Your Keys
-You need to get the required credentials for each service you want to use.
+### 1. Load the Package
+Make sure your notebook is in the same directory as the package file.
 
-#### 🚀 Pushover
-1.  Create an account at [pushover.net](https://pushover.net) and download the app.
-2.  Your **User Key** is displayed on the main page after you log in.
-3.  Scroll down and click **"Create an Application / API Token"**.
-4.  Give your application a name (e.g., "Mathematica") and create it to get an **API Token**.
+```mathematica
+SetDirectory[NotebookDirectory[]];
+Needs["Notifier`"];
+```
 
-#### 🤖 Telegram
-1.  In the Telegram app, search for the official **`@BotFather`** bot and start a chat.
-2.  Send the command `/newbot` and follow the instructions to choose a name and username for your bot.
-3.  BotFather will give you your **Bot Token**. Save it.
-4.  Find your new bot in Telegram and send it a "hello" message. **This step is required.**
-5.  Open a web browser and go to `https://api.telegram.org/bot<YourBOTToken>/getUpdates` (replacing `<YourBOTToken>` with your token).
-6.  Look for `"chat":{"id":123456789, ...}`. That number is your personal **Chat ID**.
+### 2. Configure Credentials
+Use the `SetNotificationConfig` function to set up the services you want to use. You only need to do this once per session.
 
-#### 📧 Email (Gmail)
-You must use a 16-character **App Password**, not your regular password.
-1.  Go to your Google Account's **Security** tab and ensure **2-Step Verification** is enabled.
-2.  On the same page, click on **"App Passwords"**.
-3.  Select "Mail" for the app and "Other (Custom name)..." for the device.
-4.  Name it "Mathematica" and click **Generate** to get your password.
+```mathematica
+SetNotificationConfig[
+  (* For Pushover *)
+  "PushoverUserKey" -> "YOUR_PUSHOVER_USER_KEY",
+  "PushoverAPIToken" -> "YOUR_PUSHOVER_API_TOKEN",
 
-### 3. Usage in Your Code
-See the `Example.nb` notebook in this repository for a live demonstration.
+  (* For Telegram *)
+  "TelegramBotToken" -> "YOUR_TELEGRAM_BOT_TOKEN",
+  "TelegramChatID" -> "YOUR_TELEGRAM_CHAT_ID",
 
-***
-## Contributing
-Contributions are welcome! Please feel free to open an issue to report a bug, suggest a feature, or submit a pull request.
+  (* For Email (using a Gmail App Password) *)
+  "EmailUsername" -> "your.email@gmail.com",
+  "EmailPassword" -> "your-16-character-app-password",
+  "EmailRecipient" -> "recipient.email@example.com"
+];
+```
+
+### 3. Send a Notification
+Use `SendNotification` at the end of a long calculation.
+
+```mathematica
+(* Run your long calculation *)
+timing = AbsoluteTiming[
+   Pause[10]; (* Represents a long task *)
+   result = "Simulation finished successfully.";
+];
+
+(* Send the notification *)
+SendNotification[
+  "Task complete in " <> ToString[Round[timing[[1]]]] <> "s. " <> result, 
+  "Telegram"
+]
+```
 
 ## License
 This project is licensed under the MIT License - see the `LICENSE` file for details.
